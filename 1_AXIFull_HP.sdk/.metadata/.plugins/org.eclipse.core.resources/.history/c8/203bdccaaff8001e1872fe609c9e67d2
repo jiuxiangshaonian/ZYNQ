@@ -1,0 +1,29 @@
+#include "stdio.h"
+#include "xil_io.h"
+#include "xil_cache.h"
+#include "xparameters.h"
+#include "img.h"
+#include  "endoscopic.h"
+#include  "endoscopic2.h"
+#include "xil_printf.h"
+
+int main()
+{
+	int i;
+	char c;
+
+	Xil_DCacheDisable();
+	print("AXI4 PL DDR TEST!\n\r");
+
+
+	for(i=0;i<307200;i=i+1)
+	{
+		Xil_Out8(0x10000000+i*4+0,endoscopic_img1[i*3+2]);
+		Xil_Out8(0x10000000+i*4+1,endoscopic_img1[i*3+1]);
+		Xil_Out8(0x10000000+i*4+2,endoscopic_img1[i*3+0]);
+		Xil_Out8(0x10000000+i*4+3,0); //¸ßÎ»ÇåÁã
+	}
+
+
+	return 0;
+}

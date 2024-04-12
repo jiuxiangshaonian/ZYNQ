@@ -1,0 +1,70 @@
+#include "stdio.h"
+#include "xil_io.h"
+#include "xil_cache.h"
+#include "xparameters.h"
+#include "xil_printf.h"
+#include "ff.h"
+
+void load_sd_bmp(u8 *frame);
+
+//frame buffer的起始地址
+unsigned int const frame_buffer_addr = 0x10000000;
+
+int main()
+{
+	Xil_DCacheDisable();
+	print("AXI4 PL DDR TEST!\n\r");
+
+	load_sd_bmp((u8*)frame_buffer_addr);
+
+	return 0;
+}
+
+//从SD卡中读取BMP图片
+void load_sd_bmp(u8 *frame)
+{
+	static 	FATFS fatfs;
+	FIL 	fil;
+	u8		bmp_head[54];
+	UINT 	*bmp_width,*bmp_height,*bmp_size;
+	UINT 	br;
+	int 	i,j;
+
+	//挂载文件系统
+	f_mount(&fatfs,"",1);
+
+	//打开文件
+	f_open(&fil,"test.bmp",FA_READ);
+
+	//移动文件读写指针到文件开头
+	f_lseek(&fil,0);
+
+	//读取BMP文件头
+	f_read(&fil,bmp_head,54,&br);
+	xil_printf("fengjing.bmp head: \n\r");
+	for(i=0;i<54;i++)
+		xil_printf(" %x",bmp_head[i]);
+
+	//打印BMP图片分辨率和大小
+	bmp_width  = (UINT *)(bmp_head + 0x12);
+	bmp_height = (UINT *)(bmp_head + 0x16);
+	bmp_size   = (UINT *)(bmp_head + 0x22);
+	xil_printf("\n width = %d, height = %d, size = %d bytes \n\r",
+			*bmp_width,*bmp_height,*bmp_size);
+
+	//读出图片，写入DDR
+	for(i=*bmp_height-1;i>=0;i--)
+	{
+		for(j=*bmp_width-1;j>=0;j--)
+		{
+//			f_read(&fil,frame+i*(*bmp_width)*3,(*bmp_width)*3,&br);
+			f_read(&fil,frame+((i*(*bmp_width)*4) + (j*4)),3,&br);
+		}
+	}
+
+	//关闭文件
+	f_close(&fil);
+
+	Xil_DCacheFlush();     //刷新Cache，数据更新至DDR3中
+	xil_printf("show bmp\n\r");
+}

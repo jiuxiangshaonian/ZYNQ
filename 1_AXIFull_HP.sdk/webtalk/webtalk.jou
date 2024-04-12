@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# 
+# Start of session at: Fri Apr 12 19:06:52 2024
+# Process ID: 27336
+# Current directory: F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/webtalk
+# Command line: wbtcv.exe -mode batch -source sdk_webtalk.tcl
+# Log file: F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/webtalk/webtalk.log
+# Journal file: F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/webtalk\webtalk.jou
+#-----------------------------------------------------------
+source sdk_webtalk.tcl

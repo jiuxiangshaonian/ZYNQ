@@ -1,0 +1,10 @@
+#----------------------HDMI½Ó¿Ú---------------------------
+set_property -dict {IOSTANDARD TMDS_33                 } [get_ports TMDS_tmds_clk_n]
+set_property -dict {IOSTANDARD TMDS_33  PACKAGE_PIN L14} [get_ports TMDS_tmds_clk_p]
+set_property -dict {IOSTANDARD TMDS_33  PACKAGE_PIN K19} [get_ports {TMDS_tmds_data_p[0]}]
+set_property -dict {IOSTANDARD TMDS_33                 } [get_ports {TMDS_tmds_data_n[0]}]
+set_property -dict {IOSTANDARD TMDS_33  PACKAGE_PIN M14} [get_ports {TMDS_tmds_data_p[1]}]
+set_property -dict {IOSTANDARD TMDS_33                 } [get_ports {TMDS_tmds_data_n[1]}]
+set_property -dict {IOSTANDARD TMDS_33  PACKAGE_PIN L16} [get_ports {TMDS_tmds_data_p[2]}]
+set_property -dict {IOSTANDARD TMDS_33                 } [get_ports {TMDS_tmds_data_n[2]}]
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN G17} [get_ports tmds_oen]

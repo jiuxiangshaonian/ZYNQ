@@ -1,0 +1,453 @@
+16:57:54 INFO  : Registering command handlers for SDK TCF services
+16:57:55 INFO  : Launching XSCT server: xsct.bat -interactive F:\ZYNQ\ZYNQ7035\1_AXIFull_HP\1_AXIFull_HP.sdk\temp_xsdb_launch_script.tcl
+16:57:58 INFO  : XSCT server has started successfully.
+16:58:00 INFO  : Successfully done setting XSCT server connection channel  
+16:58:00 INFO  : Successfully done setting SDK workspace  
+16:58:00 INFO  : Processing command line option -hwspec F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper.hdf.
+16:59:28 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:59:29 INFO  : Jtag cable 'Digilent JTAG-HS1 210512180081' is selected.
+16:59:29 INFO  : 'jtag frequency' command is executed.
+16:59:29 INFO  : Sourcing of 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl' is done.
+16:59:29 INFO  : Context for 'APU' is selected.
+16:59:29 INFO  : System reset is completed.
+16:59:32 INFO  : 'after 3000' command is executed.
+16:59:32 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1' command is executed.
+16:59:35 INFO  : FPGA configured successfully with bitstream "F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+16:59:35 INFO  : Context for 'APU' is selected.
+16:59:36 INFO  : Hardware design information is loaded from 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf'.
+16:59:36 INFO  : 'configparams force-mem-access 1' command is executed.
+16:59:36 INFO  : Context for 'APU' is selected.
+16:59:36 INFO  : 'ps7_init' command is executed.
+16:59:36 INFO  : 'ps7_post_config' command is executed.
+16:59:36 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+16:59:42 INFO  : The application 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf' is downloaded to processor 'ps7_cortexa9_0'.
+16:59:42 INFO  : 'configparams force-mem-access 0' command is executed.
+16:59:42 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1
+fpga -file F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+loadhw -hw F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+dow F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+16:59:42 INFO  : Memory regions updated for context APU
+16:59:42 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+16:59:42 INFO  : 'con' command is executed.
+16:59:42 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+con
+----------------End of Script----------------
+
+16:59:42 INFO  : Launch script is exported to file 'F:\ZYNQ\ZYNQ7035\1_AXIFull_HP\1_AXIFull_HP.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sw.elf_on_local.tcl'
+17:00:08 INFO  : Disconnected from the channel tcfchan#1.
+17:00:09 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:00:09 INFO  : Jtag cable 'Digilent JTAG-HS1 210512180081' is selected.
+17:00:09 INFO  : 'jtag frequency' command is executed.
+17:00:09 INFO  : Sourcing of 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl' is done.
+17:00:09 INFO  : Context for 'APU' is selected.
+17:00:09 INFO  : System reset is completed.
+17:00:12 INFO  : 'after 3000' command is executed.
+17:00:12 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1' command is executed.
+17:00:15 INFO  : FPGA configured successfully with bitstream "F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+17:00:15 INFO  : Context for 'APU' is selected.
+17:00:19 INFO  : Hardware design information is loaded from 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf'.
+17:00:19 INFO  : 'configparams force-mem-access 1' command is executed.
+17:00:19 INFO  : Context for 'APU' is selected.
+17:00:19 INFO  : 'ps7_init' command is executed.
+17:00:19 INFO  : 'ps7_post_config' command is executed.
+17:00:19 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:00:25 INFO  : The application 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf' is downloaded to processor 'ps7_cortexa9_0'.
+17:00:25 INFO  : 'configparams force-mem-access 0' command is executed.
+17:00:25 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1
+fpga -file F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+loadhw -hw F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+dow F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+17:00:25 INFO  : Memory regions updated for context APU
+17:00:25 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:00:25 INFO  : 'con' command is executed.
+17:00:25 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+con
+----------------End of Script----------------
+
+17:00:25 INFO  : Launch script is exported to file 'F:\ZYNQ\ZYNQ7035\1_AXIFull_HP\1_AXIFull_HP.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sw.elf_on_local.tcl'
+17:01:33 INFO  : Disconnected from the channel tcfchan#2.
+17:01:34 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:01:34 INFO  : Jtag cable 'Digilent JTAG-HS1 210512180081' is selected.
+17:01:34 INFO  : 'jtag frequency' command is executed.
+17:01:34 INFO  : Sourcing of 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl' is done.
+17:01:34 INFO  : Context for 'APU' is selected.
+17:01:35 INFO  : System reset is completed.
+17:01:38 INFO  : 'after 3000' command is executed.
+17:01:38 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1' command is executed.
+17:01:41 INFO  : FPGA configured successfully with bitstream "F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+17:01:41 INFO  : Context for 'APU' is selected.
+17:01:44 INFO  : Hardware design information is loaded from 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf'.
+17:01:44 INFO  : 'configparams force-mem-access 1' command is executed.
+17:01:44 INFO  : Context for 'APU' is selected.
+17:01:44 INFO  : 'ps7_init' command is executed.
+17:01:44 INFO  : 'ps7_post_config' command is executed.
+17:01:44 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:01:50 INFO  : The application 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf' is downloaded to processor 'ps7_cortexa9_0'.
+17:01:50 INFO  : 'configparams force-mem-access 0' command is executed.
+17:01:50 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1
+fpga -file F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+loadhw -hw F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+dow F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+17:01:50 INFO  : Memory regions updated for context APU
+17:01:50 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:01:50 INFO  : 'con' command is executed.
+17:01:50 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+con
+----------------End of Script----------------
+
+17:01:50 INFO  : Launch script is exported to file 'F:\ZYNQ\ZYNQ7035\1_AXIFull_HP\1_AXIFull_HP.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sw.elf_on_local.tcl'
+17:09:10 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1712912921496,  Project:1712912188971
+17:09:10 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+17:09:11 INFO  : Copied contents of F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper.hdf into \design_1_wrapper_hw_platform_0\system.hdf.
+17:09:17 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+17:09:19 INFO  : 
+17:09:19 INFO  : Updating hardware inferred compiler options for sw.
+17:09:19 INFO  : Clearing existing target manager status.
+17:09:19 INFO  : Closing and re-opening the MSS file of ther project sw_bsp
+17:09:20 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+17:09:21 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+17:10:09 INFO  : Disconnected from the channel tcfchan#3.
+17:10:10 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:10:10 INFO  : Jtag cable 'Digilent JTAG-HS1 210512180081' is selected.
+17:10:10 INFO  : 'jtag frequency' command is executed.
+17:10:10 INFO  : Sourcing of 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl' is done.
+17:10:10 INFO  : Context for 'APU' is selected.
+17:10:11 INFO  : System reset is completed.
+17:10:14 INFO  : 'after 3000' command is executed.
+17:10:14 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1' command is executed.
+17:10:17 INFO  : FPGA configured successfully with bitstream "F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+17:10:17 INFO  : Context for 'APU' is selected.
+17:10:17 INFO  : Hardware design information is loaded from 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf'.
+17:10:17 INFO  : 'configparams force-mem-access 1' command is executed.
+17:10:17 INFO  : Context for 'APU' is selected.
+17:10:17 INFO  : 'ps7_init' command is executed.
+17:10:17 INFO  : 'ps7_post_config' command is executed.
+17:10:17 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:10:23 INFO  : The application 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf' is downloaded to processor 'ps7_cortexa9_0'.
+17:10:23 INFO  : 'configparams force-mem-access 0' command is executed.
+17:10:23 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1
+fpga -file F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+loadhw -hw F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+dow F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+17:10:23 INFO  : Memory regions updated for context APU
+17:10:23 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:10:23 INFO  : 'con' command is executed.
+17:10:23 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+con
+----------------End of Script----------------
+
+17:10:23 INFO  : Launch script is exported to file 'F:\ZYNQ\ZYNQ7035\1_AXIFull_HP\1_AXIFull_HP.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sw.elf_on_local.tcl'
+17:14:31 INFO  : Disconnected from the channel tcfchan#4.
+17:14:32 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:14:32 INFO  : Jtag cable 'Digilent JTAG-HS1 210512180081' is selected.
+17:14:32 INFO  : 'jtag frequency' command is executed.
+17:14:32 INFO  : Sourcing of 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl' is done.
+17:14:32 INFO  : Context for 'APU' is selected.
+17:14:32 INFO  : System reset is completed.
+17:14:35 INFO  : 'after 3000' command is executed.
+17:14:35 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1' command is executed.
+17:14:38 INFO  : FPGA configured successfully with bitstream "F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+17:14:39 INFO  : Context for 'APU' is selected.
+17:14:41 INFO  : Hardware design information is loaded from 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf'.
+17:14:41 INFO  : 'configparams force-mem-access 1' command is executed.
+17:14:41 INFO  : Context for 'APU' is selected.
+17:14:42 INFO  : 'ps7_init' command is executed.
+17:14:42 INFO  : 'ps7_post_config' command is executed.
+17:14:42 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:14:48 INFO  : The application 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf' is downloaded to processor 'ps7_cortexa9_0'.
+17:14:48 INFO  : 'configparams force-mem-access 0' command is executed.
+17:14:48 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1
+fpga -file F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+loadhw -hw F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+dow F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+17:14:48 INFO  : Memory regions updated for context APU
+17:14:48 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:14:48 INFO  : 'con' command is executed.
+17:14:48 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+con
+----------------End of Script----------------
+
+17:14:48 INFO  : Launch script is exported to file 'F:\ZYNQ\ZYNQ7035\1_AXIFull_HP\1_AXIFull_HP.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sw.elf_on_local.tcl'
+17:28:09 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1712913975327,  Project:1712912921496
+17:28:09 INFO  : Project design_1_wrapper_hw_platform_0's source hardware specification located at F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+17:28:10 INFO  : Copied contents of F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper.hdf into \design_1_wrapper_hw_platform_0\system.hdf.
+17:28:13 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+17:28:15 INFO  : 
+17:28:16 INFO  : Updating hardware inferred compiler options for sw.
+17:28:16 INFO  : Clearing existing target manager status.
+17:28:16 INFO  : Closing and re-opening the MSS file of ther project sw_bsp
+17:28:16 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+17:28:17 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+17:30:34 INFO  : Refreshed build settings on project sw
+17:31:32 INFO  : Refreshed build settings on project sw
+17:43:19 INFO  : Disconnected from the channel tcfchan#5.
+17:43:20 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:43:20 INFO  : Jtag cable 'Digilent JTAG-HS1 210512180081' is selected.
+17:43:20 INFO  : 'jtag frequency' command is executed.
+17:43:20 INFO  : Sourcing of 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl' is done.
+17:43:20 INFO  : Context for 'APU' is selected.
+17:43:21 INFO  : System reset is completed.
+17:43:24 INFO  : 'after 3000' command is executed.
+17:43:24 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1' command is executed.
+17:43:27 INFO  : FPGA configured successfully with bitstream "F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+17:43:27 INFO  : Context for 'APU' is selected.
+17:43:27 INFO  : Hardware design information is loaded from 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf'.
+17:43:27 INFO  : 'configparams force-mem-access 1' command is executed.
+17:43:27 INFO  : Context for 'APU' is selected.
+17:43:27 INFO  : 'ps7_init' command is executed.
+17:43:27 INFO  : 'ps7_post_config' command is executed.
+17:43:27 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:43:28 INFO  : The application 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf' is downloaded to processor 'ps7_cortexa9_0'.
+17:43:28 INFO  : 'configparams force-mem-access 0' command is executed.
+17:43:28 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1
+fpga -file F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+loadhw -hw F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+dow F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+17:43:28 INFO  : Memory regions updated for context APU
+17:43:28 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:43:28 INFO  : 'con' command is executed.
+17:43:28 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+con
+----------------End of Script----------------
+
+17:43:28 INFO  : Launch script is exported to file 'F:\ZYNQ\ZYNQ7035\1_AXIFull_HP\1_AXIFull_HP.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sw.elf_on_local.tcl'
+17:44:48 INFO  : Disconnected from the channel tcfchan#6.
+17:44:49 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:44:49 INFO  : Jtag cable 'Digilent JTAG-HS1 210512180081' is selected.
+17:44:49 INFO  : 'jtag frequency' command is executed.
+17:44:49 INFO  : Sourcing of 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl' is done.
+17:44:49 INFO  : Context for 'APU' is selected.
+17:44:49 INFO  : System reset is completed.
+17:44:52 INFO  : 'after 3000' command is executed.
+17:44:53 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1' command is executed.
+17:44:56 INFO  : FPGA configured successfully with bitstream "F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+17:44:56 INFO  : Context for 'APU' is selected.
+17:44:56 INFO  : Hardware design information is loaded from 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf'.
+17:44:56 INFO  : 'configparams force-mem-access 1' command is executed.
+17:44:56 INFO  : Context for 'APU' is selected.
+17:44:56 INFO  : 'ps7_init' command is executed.
+17:44:56 INFO  : 'ps7_post_config' command is executed.
+17:44:56 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:44:56 INFO  : The application 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf' is downloaded to processor 'ps7_cortexa9_0'.
+17:44:56 INFO  : 'configparams force-mem-access 0' command is executed.
+17:44:56 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1
+fpga -file F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+loadhw -hw F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+dow F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+17:44:57 INFO  : Memory regions updated for context APU
+17:44:57 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:44:57 INFO  : 'con' command is executed.
+17:44:57 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+con
+----------------End of Script----------------
+
+17:44:57 INFO  : Launch script is exported to file 'F:\ZYNQ\ZYNQ7035\1_AXIFull_HP\1_AXIFull_HP.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sw.elf_on_local.tcl'
+17:56:16 INFO  : Disconnected from the channel tcfchan#7.
+17:56:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:56:17 INFO  : Jtag cable 'Digilent JTAG-HS1 210512180081' is selected.
+17:56:17 INFO  : 'jtag frequency' command is executed.
+17:56:17 INFO  : Sourcing of 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl' is done.
+17:56:18 INFO  : Context for 'APU' is selected.
+17:56:18 INFO  : System reset is completed.
+17:56:21 INFO  : 'after 3000' command is executed.
+17:56:21 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1' command is executed.
+17:56:24 INFO  : FPGA configured successfully with bitstream "F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+17:56:24 INFO  : Context for 'APU' is selected.
+17:56:24 INFO  : Hardware design information is loaded from 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf'.
+17:56:24 INFO  : 'configparams force-mem-access 1' command is executed.
+17:56:24 INFO  : Context for 'APU' is selected.
+17:56:24 INFO  : 'ps7_init' command is executed.
+17:56:24 INFO  : 'ps7_post_config' command is executed.
+17:56:24 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:56:25 INFO  : The application 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf' is downloaded to processor 'ps7_cortexa9_0'.
+17:56:25 INFO  : 'configparams force-mem-access 0' command is executed.
+17:56:25 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1
+fpga -file F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+loadhw -hw F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+dow F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+17:56:25 INFO  : Memory regions updated for context APU
+17:56:25 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:56:25 INFO  : 'con' command is executed.
+17:56:25 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+con
+----------------End of Script----------------
+
+17:56:25 INFO  : Launch script is exported to file 'F:\ZYNQ\ZYNQ7035\1_AXIFull_HP\1_AXIFull_HP.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sw.elf_on_local.tcl'
+18:03:39 INFO  : Disconnected from the channel tcfchan#8.
+18:03:40 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:03:40 INFO  : Jtag cable 'Digilent JTAG-HS1 210512180081' is selected.
+18:03:40 INFO  : 'jtag frequency' command is executed.
+18:03:40 INFO  : Sourcing of 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl' is done.
+18:03:40 INFO  : Context for 'APU' is selected.
+18:03:40 INFO  : System reset is completed.
+18:03:43 INFO  : 'after 3000' command is executed.
+18:03:43 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1' command is executed.
+18:03:46 INFO  : FPGA configured successfully with bitstream "F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit"
+18:03:46 INFO  : Context for 'APU' is selected.
+18:03:46 INFO  : Hardware design information is loaded from 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf'.
+18:03:46 INFO  : 'configparams force-mem-access 1' command is executed.
+18:03:46 INFO  : Context for 'APU' is selected.
+18:03:47 INFO  : 'ps7_init' command is executed.
+18:03:47 INFO  : 'ps7_post_config' command is executed.
+18:03:47 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+18:03:47 INFO  : The application 'F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf' is downloaded to processor 'ps7_cortexa9_0'.
+18:03:47 INFO  : 'configparams force-mem-access 0' command is executed.
+18:03:47 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS1 210512180081" && level==0} -index 1
+fpga -file F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+loadhw -hw F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/design_1_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+dow F:/ZYNQ/ZYNQ7035/1_AXIFull_HP/1_AXIFull_HP.sdk/sw/Debug/sw.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+18:03:47 INFO  : Memory regions updated for context APU
+18:03:47 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+18:03:47 INFO  : 'con' command is executed.
+18:03:47 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent JTAG-HS1 210512180081"} -index 0
+con
+----------------End of Script----------------
+
+18:03:47 INFO  : Launch script is exported to file 'F:\ZYNQ\ZYNQ7035\1_AXIFull_HP\1_AXIFull_HP.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_sw.elf_on_local.tcl'
+19:06:51 INFO  : Disconnected from the channel tcfchan#9.
